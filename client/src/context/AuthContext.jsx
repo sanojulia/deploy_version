@@ -1,8 +1,8 @@
 import React, { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { auth, googleProvider, signInWithPopup } from "../firebase";
+import { apiService } from "../services/apiService";
 
 // Create AuthContext
 export const AuthContext = createContext();
@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
     // Email/password authentication
     const signin = async (email, password) => {
         try {
-            const response = await axios.post("/api/user/signin", { email, password });
+            const response = await apiService.post("/api/user/signin", { email, password });
             const { token } = response.data;
             // Store token in localStorage
             localStorage.setItem("authToken", token);
@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
             const idToken = await result.user.getIdToken();
             
             // Exchange Firebase token for our app's JWT token
-            const response = await axios.post("/api/user/google-auth", { 
+            const response = await apiService.post("/api/user/google-auth", { 
                 idToken,
                 email: result.user.email,
                 displayName: result.user.displayName,
