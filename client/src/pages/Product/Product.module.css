@@ -1,0 +1,40 @@
+.productPage {
+  padding: 40px 10vw;
+  background-color: #f8f8f8;
+  min-height: calc(100vh - 120px);
+}
+  
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.productGrid {
+    display: grid;
+    grid-template-columns: 40% auto;
+    gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .productPage {
+      padding: 20px 5vw;
+    }
+  
+    .productGrid {
+      grid-template-columns: 40% auto;
+      gap: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+  .productPage {
+    padding: 20px 0;
+  }
+
+  .productGrid {
+    grid-template-columns: minmax(280px, 1fr);
+    gap: 15px;
+  }
+}
+  

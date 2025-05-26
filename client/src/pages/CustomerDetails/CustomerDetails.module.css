@@ -1,0 +1,39 @@
+.customerDetailPage {
+  padding: 20px 10vw;
+  background-color: #f8f8f8;
+  min-height: calc(100vh - 120px);
+}
+  
+.container {
+  /* max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.flex1 {
+  flex: 0 0 30%;
+}
+
+.flex2 {
+  flex: 0 0 70%;
+}
+
+/* @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      max-width: 100%;
+    }
+} */
+
+
+@media (max-width: 600px) {
+    .container {
+      flex-direction: column;
+      max-width: 100%;
+    }
+}

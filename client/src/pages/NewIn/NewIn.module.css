@@ -1,0 +1,66 @@
+.newInPage {
+  padding: 40px 0;
+  background-color: #f8f8f8;
+  min-height: calc(100vh - 120px);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.pageHeader {
+  margin-bottom: 30px;
+}
+
+.pageHeader h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #2d2d2d;
+}
+
+.pageHeader p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.noResults {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.noResults h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #2d2d2d;
+}
+
+.noResults p {
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .newInPage {
+    padding: 20px 0;
+  }
+
+  .productGrid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+  }
+}
