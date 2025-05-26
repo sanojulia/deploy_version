@@ -1,0 +1,35 @@
+.body-button {
+    color: #000000;
+    border: 1px solid #000000;
+    padding: 0.6em 1.2em;
+    font-size: 0.7em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    transition: 0.50s;
+}
+
+.hero-button {
+    color: #000000;
+    border: 2px solid #FFFFFF;
+    padding: 0.6em 1.2em;
+    font-size: 0.6em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    transition: 0.50s;
+}
+
+.body-button:hover {
+    color: #FFFFFF;
+    border: 2px solid #000000;
+    background-color: #000000;    
+}
+
+.hero-button:hover {
+    color: #FFFFFF;
+    border: 2px solid #000000;
+    background-color: #000000;    
+}

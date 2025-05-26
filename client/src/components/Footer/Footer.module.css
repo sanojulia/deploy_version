@@ -1,0 +1,68 @@
+.footer {
+    border-top: solid 0.8px hsl(0, 2%, 90%);
+    color: hsl(0, 0%, 40%);
+    width: 100%;
+  }
+
+  .footerIcons {
+    margin: 0 auto;
+    padding: 0.5rem 0;
+    color:hsl(0, 0%, 40%);
+  }
+
+  .pipeSymbol {
+    font-weight: lighter;
+  }
+  
+  .footerContainer {
+    background-color: hsl(0, 2%, 72%);
+    margin: 0 auto;
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .innerContainer {
+    display: flex;
+    align-items: center;
+  }
+
+  .left {
+    flex: 1;
+    justify-content: flex-start;
+    margin-left: 2rem;
+  }
+
+  .right {
+    flex: 3;
+    justify-content: flex-end;
+    margin-right: 2rem;
+  }
+
+  .footerText {
+    margin: 0;
+    font-size: 0.4rem;
+  }
+  
+  .footerLinks {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .footerLink {
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footerLink:hover {
+    color: hsl(0, 2%, 72%);
+  }
+
+  @media (max-width: 768px) {
+    .footerLinks {
+      gap: 1.0rem;
+    }
+  }

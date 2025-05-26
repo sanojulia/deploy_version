@@ -1,0 +1,40 @@
+
+.box {
+    display:flex;
+    width: 100%;
+    max-width: auto;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    font-weight: 500;
+    padding: 0.5rem;
+}
+
+.boxGreen{
+    background-color: #69b065;
+}
+
+.boxBlue {
+    background-color: #467ba6;
+}
+
+.boxRed {
+    background-color: #b63c56;
+}
+
+.boxPurple {
+    background-color: #b23cb6;
+}
+
+@media (max-width: 768px) {
+    .box {
+        max-width: 180px;
+    }
+}
+
+@media (max-width: 360px) {
+    .box {
+        max-width: 140px;
+    }
+}

@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    max-width: 100%;
+    margin: 20px;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .container {
+        display: flex;
+        max-width: 100%;
+        margin: 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+} 
+
+
+@media (max-width: 360px) {
+    .container {
+        display: flex;
+        max-width: 100%;
+        margin: 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+} 

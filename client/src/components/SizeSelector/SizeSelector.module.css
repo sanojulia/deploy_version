@@ -1,0 +1,14 @@
+.container {
+    margin: 10px 0;
+    font-size: clamp(0.875rem, 2vw, 0.875rem);
+}
+
+.container > p {
+    font-weight: bold;
+    margin: 0;
+}
+
+.dropDownSelector {
+    width: 8.3em;
+    font-size: clamp(0.875rem, 2vw, 0.875rem);
+}

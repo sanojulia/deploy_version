@@ -1,0 +1,249 @@
+.filtersContainer {
+  margin-bottom: 30px;
+}
+
+.filterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.filterToggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.filterToggle:hover {
+  background: #f8f8f8;
+}
+
+.filterCount {
+  background: #2d2d2d;
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 12px;
+  margin-left: 4px;
+}
+
+.sortContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sortContainer label {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.sortSelect {
+  padding: 8px 32px 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  background: white;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+}
+
+.filterPanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 100vh;
+  background: white;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  overflow-y: auto;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
+
+.filterPanelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 1;
+}
+
+.filterPanelHeader h3 {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.clearFilters {
+  background: none;
+  border: none;
+  color: #2d2d2d;
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.filterGroups {
+  padding: 16px;
+}
+
+.filterGroup {
+  margin-bottom: 24px;
+}
+
+.filterGroup h4 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.filterOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.filterOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.filterOption input[type="checkbox"] {
+  display: none;
+}
+
+.checkmark {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  position: relative;
+}
+
+.filterOption input[type="checkbox"]:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 9px;
+  border: solid #2d2d2d;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.colorOptions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.colorOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.colorSwatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+}
+
+.sizeOptions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.sizeOption {
+  position: relative;
+  cursor: pointer;
+}
+
+.sizeOption input[type="checkbox"] {
+  display: none;
+}
+
+.sizeBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.sizeOption input[type="checkbox"]:checked + .sizeBox {
+  background: #2d2d2d;
+  color: white;
+  border-color: #2d2d2d;
+}
+
+.filterPanelFooter {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.viewItems {
+  width: 100%;
+  padding: 12px;
+  background: #2d2d2d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.viewItems:hover {
+  background: #1a1a1a;
+}
+
+@media (max-width: 768px) {
+  .filterPanel {
+    width: 100%;
+  }
+  
+  .sortContainer label {
+    display: none;
+  }
+  
+  .sortSelect {
+    width: 140px;
+  }
+}

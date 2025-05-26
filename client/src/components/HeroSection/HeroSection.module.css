@@ -1,0 +1,60 @@
+.heroSection {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    height: 80vh;
+}
+
+.heroImage {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../../assets/hero-image.jpg");
+    background-size: cover;
+    background-position: 55% 20%;
+    height: 100%;
+    position: relative;
+}
+
+.heroText {
+    text-align: center;
+    width: 100%;
+}
+
+.heroHeading {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    color: white;
+    text-shadow: -2px -2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.logoContainer {
+    display: flex;
+    margin: 0 auto;
+    max-width: 18rem;
+    max-height: 6rem;
+}
+
+.logoImage {
+    width: 15rem;
+    height: auto;
+    object-fit: cover;
+  }
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+    .logoContainer {
+        max-height: 4rem;
+    }
+    .logoImage {
+        width: 10rem;
+        height: auto;
+        object-fit: cover;
+      }
+}

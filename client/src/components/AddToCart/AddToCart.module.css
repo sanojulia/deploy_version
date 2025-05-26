@@ -1,0 +1,13 @@
+.addButton {
+    background-color: hsl(120, 30%, 48%);
+    color: white;
+    font-size: clamp(0.875rem, 2vw, 0.875rem);
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.50s;
+}
+
+.addButton:hover {
+    background-color: hsl(120, 30%, 34%);
+}

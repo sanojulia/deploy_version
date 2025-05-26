@@ -1,0 +1,84 @@
+.container {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+    font-size: clamp(0.875rem, 2vw, 0.875rem);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    color: #2d2d2d;
+}
+
+.container h2{
+    margin: 0.5em auto;
+    text-align: center;
+}
+
+.container p {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.formField label{
+    display: block;
+    margin: 0.5rem 0;
+    text-align: left;
+    font-weight: 500;
+}
+
+.formField input {
+    display: block;
+    margin: 10px 0 0 0;
+    width: 90%;
+    min-height: 1.5em;
+}
+
+.expiryDate {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: -10px 0 0 0;;
+}
+
+.expiryDate input {
+    width: 40px;
+    text-align: center;
+}
+
+.submitButton {
+    margin: 10px 0 0 0;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+    background-color: #333;
+}
+
+.paymentMethods {
+    margin-top: 20px;
+}
+
+.paymentMethods p {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.paymentIcons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 1.5rem;
+    color: #666;
+}
+
+.fieldError{
+    color: red;
+}

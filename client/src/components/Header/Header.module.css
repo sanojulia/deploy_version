@@ -1,0 +1,271 @@
+.header {
+  width: 100%;
+  background-color: #2d2d2d;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.headerTop {
+  background-color: black;
+  color: white;
+  padding: 8px 0;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.headerMain {
+  padding: 15px 0;
+  background-color: #2d2d2d;
+}
+
+.headerMainContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.mobileMenuToggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.logoContainer {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: block;
+  text-decoration: none;
+}
+
+.logoImage {
+  width: 80px;
+  height: auto;
+  transition: width 0.3s ease;
+}
+
+.navMenuContainer {
+  flex: 1;
+  min-width: 0;
+}
+
+.navMenu {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  color: #ccc;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.searchContainer {
+  position: relative;
+  width: 250px;
+  transition: all 0.3s ease;
+}
+
+.searchInput {
+  padding: 8px 35px 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  background: white;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 2;
+}
+
+.userActions {
+  display: flex;
+  gap: 15px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.actionButton {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.2s ease;
+}
+
+.actionButton:hover {
+  color: #ccc;
+}
+
+@media (max-width: 1024px) {
+  .logoImage {
+    width: 70px;
+  }
+  
+  .navMenu {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 900px) {
+  .navMenu {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 850px) {
+  .searchContainer {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+  }
+
+  .searchContainer.searchActive {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    background: #2d2d2d;
+    z-index: 1000;
+  }
+
+  .searchInput {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* width: 100%; */
+    height: 100%;
+    padding: 0;
+    border: none;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .searchContainer.searchActive .searchInput {
+    position: relative;
+    opacity: 1;
+    pointer-events: auto;
+    padding: 8px 35px 8px 12px;
+    border: 1px solid #ddd;
+  }
+
+  .searchIcon {
+    position: relative;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .searchContainer.searchActive .searchIcon {
+    position: absolute;
+    right: 25px;
+    width: auto;
+    height: auto;
+    color: #666;
+  }
+  }
+
+@media (max-width: 768px) {
+  .mobileMenuToggle {
+    display: block;
+  }
+
+  .logoImage {
+    width: 60px;
+  }
+
+  .navMenuContainer {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: #2d2d2d;
+    padding: 80px 20px 20px;
+    transition: left 0.3s ease;
+    z-index: 100;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .navMenuActive {
+    left: 0;
+  }
+
+  .closeNavMenu {
+    position:absolute;
+    right: 0;
+    top: 0;
+    padding: 3em;
+    cursor: pointer;
+  }
+
+  .navMenu {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoImage {
+    width: 50px;
+  }
+
+  .container {
+    padding: 0 10px;
+  }
+
+  .headerMainContainer {
+    gap: 10px;
+  }
+}
