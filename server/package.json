@@ -1,10 +1,9 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "type": "module",
-  "main": "index.js",
+  "main": "index.cjs",
   "scripts": {
-    "start": "node index.js",
+    "start": "node index.cjs",
     "seed": "node seed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,3 +24,4 @@
     "@babel/node": "^7.27.1"
   }
 }
+
