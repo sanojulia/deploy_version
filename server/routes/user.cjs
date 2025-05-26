@@ -94,6 +94,23 @@ router.post('/signin', async (req, res) => {
      }
 });
 
+// Root route for user API
+router.get('/', (req, res) => {
+  res.json({
+    message: 'User API is working',
+    endpoints: [
+      { path: '/register', method: 'POST', description: 'Register a new user' },
+      { path: '/signin', method: 'POST', description: 'Sign in an existing user' },
+      { path: '/google-auth', method: 'POST', description: 'Authenticate with Google' },
+      { path: '/:id', method: 'GET', description: 'Get user data by ID (requires auth)' },
+      { path: '/update/:id', method: 'PUT', description: 'Update user details (requires auth)' },
+      { path: '/change-password', method: 'PUT', description: 'Change user password (requires auth)' },
+      { path: '/update-address/:id', method: 'PUT', description: 'Update user address (requires auth)' },
+      { path: '/update-payment/:id', method: 'PUT', description: 'Update payment details (requires auth)' }
+    ]
+  });
+});
+
 // Get user data by ID
 router.get('/:id', auth, async (req, res) => {
     const { id } = req.params;
