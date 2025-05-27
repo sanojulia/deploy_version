@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import axios from 'axios';
+import { apiService } from '../services/apiService';
 import { AuthContext, getAuthHeaders} from './AuthContext';
 
 const BagContext = createContext();
@@ -42,9 +42,8 @@ export const BagProvider = ({ children }) => {
     try {
       setLoading(true);
       setError(null);
-      const headers = getAuthHeaders(); // Assuming getAuthHeaders is available in this scope
-      const response = await axios.get("/api/cart", { headers });
-      const cartData = response.data;
+      const headers = getAuthHeaders(); // Get auth headers
+      const cartData = await apiService.get("/api/cart", { headers });
 
       if (cartData && cartData.items) {
         setBagItems(normalizeCartItems(cartData.items)); // Assuming normalizeCartItems is available
