@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './ChangePasswordForm.module.css';
-import axios from 'axios'; 
+import { apiService } from '../../services/apiService'; 
 import { getAuthHeaders } from '../../context/AuthContext';
 
 const ChangePasswordForm = () => {
@@ -13,7 +13,7 @@ const ChangePasswordForm = () => {
 
         try {
             const headers = getAuthHeaders();
-            await axios.put("/api/user/change-password",{ currentPassword, newPassword },{ headers });
+            await apiService.put("/api/user/change-password", { currentPassword, newPassword }, { headers });
             setMessage("Password updated successfully!");
             setCurrentPassword('');
             setNewPassword('');
