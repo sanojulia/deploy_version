@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './Sale.module.css';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import ProductFilters from '../../components/ProductFilters/ProductFilters';
-import axios from 'axios';
+import { apiService } from '../../services/apiService';
 import { changeFiltering } from '../../utils/changeFiltering';
 import { useNavigate } from 'react-router-dom';
 import { changeSorting } from '../../utils/changeSorting';
@@ -18,9 +18,9 @@ const Sale = () => {
     useEffect(() => {
       const loadProducts = async () => {
         try {
-          const response = await axios.get('http://localhost:5000/api/sale/');
-          setProducts(response.data);
-          setFilteredProducts(response.data);
+          const data = await apiService.get('/api/sale');
+          setProducts(data);
+          setFilteredProducts(data);
         } catch (err) {
           setError(err.message || 'Failed to load sale products');
           console.error('Error fetching products:', err);
