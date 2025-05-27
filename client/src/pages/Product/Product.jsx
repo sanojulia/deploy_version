@@ -3,7 +3,7 @@ import styles from './Product.module.css';
 import { useParams } from 'react-router-dom';
 import ProductThumbnail from '../../components/ProductThumbnail/ProductThumbnail';
 import ProductInfo from '../../components/ProductInfo/ProductInfo';
-import axios from 'axios';
+import { apiService } from '../../services/apiService';
 
 const Product = () => {
   const { id } = useParams();
@@ -14,8 +14,8 @@ const Product = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`/api/product/${id}`);
-        setProduct(response.data);
+        const data = await apiService.get(`/api/product/${id}`);
+        setProduct(data);
       } catch (err) {
         if (err.response && err.response.status === 404) {
           setError('Product not found');
