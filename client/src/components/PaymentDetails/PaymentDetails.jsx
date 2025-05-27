@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react'
 import styles from './PaymentDetails.module.css';
 import { AuthContext, getAuthHeaders } from '../../context/AuthContext';
-import axios from 'axios'; 
+import { apiService } from '../../services/apiService'; 
 
 const PaymentDetails = () => {
     const [paymentDetails, setPaymentDetails] = useState({  
@@ -18,7 +18,7 @@ const PaymentDetails = () => {
             if (user) {
                 try {
                     const headers = getAuthHeaders();
-                    const { data } = await axios.get(`/api/user/${user.userId}`, { headers });
+                    const data = await apiService.get(`/api/user/${user.userId}`, { headers });
                     setPaymentDetails({
                         cardNumber: data.paymentDetails?.cardNumber || '',
                         expireMonth: data.paymentDetails?.expireMonth || '',
@@ -39,7 +39,7 @@ const PaymentDetails = () => {
 
         try {
             const headers = getAuthHeaders();
-            await axios.put(`/api/user/update-payment/${user.userId}`, paymentDetails, { headers });
+            await apiService.put(`/api/user/update-payment/${user.userId}`, paymentDetails, { headers });
             setMessage("Payment details updated successfully!");
         } catch (error) {
             console.error("Error updating payment details:", error);
