@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react'
 import styles from './MyDetailsForm.module.css';
 import { AuthContext, getAuthHeaders } from '../../context/AuthContext';
-import axios from 'axios';  
+import { apiService } from '../../services/apiService';  
     
 const MyDetailsForm = () => {   
     const { user } = useContext(AuthContext);
@@ -15,8 +15,8 @@ const MyDetailsForm = () => {
      const fetchUserData = async () => {
       if (user) {
         try {
-            const headers = getAuthHeaders();;
-            const { data } = await axios.get(`/api/user/${user.userId}`, {headers});
+            const headers = getAuthHeaders();
+            const data = await apiService.get(`/api/user/${user.userId}`, {headers});
             setFirstName(data.firstName || '');
             setLastName(data.lastName || '');
             setEmail(data.email || '');
@@ -35,7 +35,7 @@ const MyDetailsForm = () => {
         e.preventDefault();
         try {
             const headers = getAuthHeaders();
-            const { data } = await axios.put(`/api/user/update/${user.userId}`, { firstName, lastName, email, phoneNumber }, { headers });
+            const data = await apiService.put(`/api/user/update/${user.userId}`, { firstName, lastName, email, phoneNumber }, { headers });
             setFirstName(data.user.firstName);
             setLastName(data.user.lastName);
             setEmail(data.user.email);
