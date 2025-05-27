@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import styles from './Account.module.css';
 import { AuthContext } from '../../context/AuthContext';
-import axios from 'axios';
+import { apiService } from '../../services/apiService';
 import { auth, googleProvider, signInWithPopup } from '../../firebase';
 
 
@@ -37,7 +37,7 @@ const Account = () => {
 
         setMessage('Login Successful');
       } else {
-        const { data } = await axios.post("/api/user/register", {
+        const data = await apiService.post("/api/user/register", {
           firstName,
           lastName,
           email,
