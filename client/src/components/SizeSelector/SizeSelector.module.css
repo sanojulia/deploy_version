@@ -1,6 +1,6 @@
 .container {
     margin: 10px 0;
-    font-size: clamp(0.875rem, 2vw, 0.875rem);
+    font-size: clamp(1rem, 2vw, 1rem);
 }
 
 .container > p {
@@ -10,5 +10,5 @@
 
 .dropDownSelector {
     width: 8.3em;
-    font-size: clamp(0.875rem, 2vw, 0.875rem);
+    font-size: clamp(1rem, 2vw, 1rem);
 }
