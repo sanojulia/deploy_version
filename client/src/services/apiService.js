@@ -2,6 +2,7 @@ import axios from 'axios';
 
 // Base URL for all API requests
 // IMPORTANT: Force all requests to use the deployed server URL to fix connection issues
+// Updated to use the correct Render.com URL
 const API_BASE_URL = 'https://deploy-version.onrender.com';
 
 // Comment this out when you want to use localhost for development:
