@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 // Base URL for all API requests
-// Use the deployed URL in production, fallback to localhost for development
-// const API_BASE_URL = import.meta.env.PROD ? 'https://deploy-version.onrender.com' : 'http://localhost:5000';
-
-// Use this for testing with your specific deployment URL:
+// IMPORTANT: Force all requests to use the deployed server URL to fix connection issues
 const API_BASE_URL = 'https://deploy-version.onrender.com';
+
+// Comment this out when you want to use localhost for development:
+// const API_BASE_URL = import.meta.env.PROD ? 'https://deploy-version.onrender.com' : 'http://localhost:5000';
 
 // Service for handling all API requests
 export const apiService = {
