@@ -21,18 +21,40 @@ export const AuthProvider = ({ children }) => {
     // Email/password authentication
     const signin = async (email, password) => {
         try {
+            console.log('Attempting to sign in with:', { email });
+            
             const response = await apiService.post("/api/user/signin", { email, password });
-            const { token } = response.data;
+            console.log('Signin response received:', response);
+            
+            if (!response || typeof response !== 'object') {
+                console.error('Invalid response format:', response);
+                throw new Error('Server returned an invalid response format');
+            }
+            
+            // The backend returns { token, id } structure
+            const { token } = response;
+            
+            if (!token) {
+                console.error('Token missing from response:', response);
+                throw new Error('Authentication token missing from server response');
+            }
+            
             // Store token in localStorage
             localStorage.setItem("authToken", token);
 
             const decodedUser = jwtDecode(token);
+            console.log('Decoded user:', decodedUser);
             setUser(decodedUser);
 
             navigate("/");
         } catch (error) {
             console.error("Signin error:", error);
-            throw new Error("Invalid credentials");
+            console.error("Error details:", {
+                message: error.message,
+                stack: error.stack,
+                name: error.name
+            });
+            throw new Error("Authentication failed: " + (error.message || 'Unknown error'));
         }
     };
     
