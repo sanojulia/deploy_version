@@ -4,11 +4,32 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
-app.use(cors({
-    origin: ["http://localhost:5173", "https://your-client-domain.com"], 
-    credentials: true, 
-  })
-);
+// Configure CORS based on environment
+const corsOptions = {
+  origin: function(origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl, etc)
+    if(!origin) return callback(null, true);
+    
+    // List of allowed origins
+    const allowedOrigins = [
+      'http://localhost:5173',
+      'http://localhost:3000',
+      'https://your-client-domain.com',
+      // Add your actual deployed client domain here
+    ];
+    
+    if(allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Use the MongoDB URI from environment variables
@@ -16,6 +37,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
     .then(() => console.log('MongoDB connected'))
     .catch((err) => console.error('MongoDB connection error:', err));
 
+// The products.cjs route file handles filtering by category based on the route path
 app.use("/api/women", require("./routes/products.cjs"));
 app.use("/api/men", require("./routes/products.cjs"));
 app.use("/api/sale", require("./routes/products.cjs"));
