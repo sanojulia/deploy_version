@@ -2,9 +2,8 @@ import React, { useState, useEffect, useContext } from 'react'
 import styles from './MyDetailsBar.module.css';
 import Avatar from '../Avatar/Avatar';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext';
-import axios from 'axios';
-
+import { AuthContext, getAuthHeaders } from '../../context/AuthContext';
+import { apiService } from '../../services/apiService';
 
 const MyDetailsBar = ({ onOptionClick }) => {
     const navigate = useNavigate();
@@ -15,11 +14,8 @@ const MyDetailsBar = ({ onOptionClick }) => {
      const fetchUserData = async () => {
       if (user) {
         try {
-          const token = localStorage.getItem("authToken");
-          console.log("Token:", token);
-          const { data } = await axios.get(`/api/user/${user.userId}`, {
-            headers: { Authorization: `Bearer ${token}` },
-          });
+          const headers = getAuthHeaders();
+          const data = await apiService.get(`/api/user/${user.userId}`, { headers });
           setUserData({ firstName: data.firstName || 'User', lastName: data.lastName || ''});
         } catch (error) {
           console.error("Error fetching user data:", error);
