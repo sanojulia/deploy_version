@@ -17,54 +17,51 @@ app.use(express.json());
 
 // Use the MongoDB URI from environment variables
 console.log('Attempting to connect to MongoDB...');
-console.log('MongoDB URI (masked):', process.env.MONGO_URI ? process.env.MONGO_URI.replace(/\/\/.+@/, '//***:***@') : 'undefined');
 
-// Set up mongoose connection with retry logic
-const connectWithRetry = () => {
-  mongoose.connect(process.env.MONGO_URI, { 
-    useNewUrlParser: true, 
-    useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 60000, // Increase timeout to 60 seconds
-    socketTimeoutMS: 90000, // Increase socket timeout to 90 seconds
-    connectTimeoutMS: 60000, // Increase connection timeout to 60 seconds
-    heartbeatFrequencyMS: 30000, // Check server status every 30 seconds
-    retryWrites: true, // Enable retryable writes
-    maxPoolSize: 10, // Increase connection pool size
-    minPoolSize: 5 // Minimum connections in the pool
-  })
-  .then(() => {
-    console.log('MongoDB connected successfully');
+// Try a simpler connection approach
+const { MongoClient } = require('mongodb');
+let db;
+
+// Function to connect to MongoDB directly
+async function connectToMongoDB() {
+  try {
+    console.log('Connecting to MongoDB with direct driver...');
+    const client = new MongoClient(process.env.MONGO_URI, {
+      connectTimeoutMS: 30000,
+      socketTimeoutMS: 45000,
+      // Simplified options
+    });
     
-    // Test the connection by listing collections
-    mongoose.connection.db.listCollections().toArray()
-      .then(collections => {
-        console.log('Available collections:', collections.map(c => c.name).join(', '));
-      })
-      .catch(err => console.error('Error listing collections:', err));
-  })
-  .catch(err => {
-    console.error('MongoDB connection error:', err);
-    console.log('Retrying connection in 5 seconds...');
-    setTimeout(connectWithRetry, 5000); // Retry after 5 seconds
-  });
-};
+    await client.connect();
+    console.log('Connected to MongoDB successfully!');
+    
+    // Get the database name from the connection string or use default
+    const dbName = process.env.MONGO_URI.split('/').pop() || 'jusastore';
+    db = client.db(dbName);
+    
+    // Test the connection
+    const collections = await db.listCollections().toArray();
+    console.log('Available collections:', collections.map(c => c.name).join(', '));
+    
+    // Set up mongoose with the established connection
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      // Use minimal options
+    });
+    
+    console.log('Mongoose connected using established connection');
+    return true;
+  } catch (error) {
+    console.error('Failed to connect to MongoDB:', error);
+    console.log('Will retry in 5 seconds...');
+    setTimeout(connectToMongoDB, 5000);
+    return false;
+  }
+}
 
-// Initial connection attempt
-connectWithRetry();
-
-// Handle connection events
-mongoose.connection.on('error', (err) => {
-  console.error('MongoDB connection error:', err);
-});
-
-mongoose.connection.on('disconnected', () => {
-  console.log('MongoDB disconnected, attempting to reconnect...');
-  connectWithRetry();
-});
-
-mongoose.connection.on('reconnected', () => {
-  console.log('MongoDB reconnected');
-});
+// Start the connection process
+connectToMongoDB();
 
 // The products.cjs route file handles filtering by category based on the route path
 app.use("/api/women", require("./routes/products.cjs"));
