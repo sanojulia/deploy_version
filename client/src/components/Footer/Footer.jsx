@@ -17,9 +17,9 @@ const Footer = () => {
               <span><i className="fa-brands fa-youtube" style={{color: "#ff0000"}}></i></span>
             </a>
             <span className={styles.pipeSymbol}>|</span>
-            <span><i className="fab fa-cc-visa"></i></span>
-            <span><i className="fab fa-cc-mastercard"></i></span>
-            <span><i className="fab fa-cc-amex"></i></span>
+            <span className={styles.footerLink}><i className="fab fa-cc-visa"></i></span>
+            <span className={styles.footerLink}><i className="fab fa-cc-mastercard"></i></span>
+            <span className={styles.footerLink}><i className="fab fa-cc-amex"></i></span>
         </div>
       </div>
       <div className={styles.footerContainer}>
