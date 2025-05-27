@@ -76,9 +76,8 @@ export const BagProvider = ({ children }) => {
     try {
       console.log("Posting to /api/cart:", item);
       const headers = getAuthHeaders();
-      const response = await axios.post("/api/cart", item, { headers });
-
-      const updatedCart = response.data;
+      const updatedCart = await apiService.post("/api/cart", item, { headers });
+      // apiService already returns the data directly
 
       // Sync state with the updated backend response
       if (updatedCart && updatedCart.items) {
