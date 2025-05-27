@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './NewIn.module.css';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import ProductFilters from '../../components/ProductFilters/ProductFilters';
-import axios from 'axios';
+import { apiService } from '../../services/apiService';
 import { changeFiltering } from '../../utils/changeFiltering';
 import { useNavigate } from 'react-router-dom';
 import { changeSorting } from '../../utils/changeSorting';
@@ -19,9 +19,9 @@ const NewIn = () => {
     useEffect(() => {
       const loadProducts = async () => {
         try {
-          const response = await axios.get('http://localhost:5000/api/new-in/');
-          setProducts(response.data);
-          setFilteredProducts(response.data);
+          const data = await apiService.get('/api/new-in');
+          setProducts(data);
+          setFilteredProducts(data);
         } catch (err) {
           setError(err.message || 'Failed to load new products');
           console.error('Error fetching products:', err);
