@@ -93,9 +93,8 @@ export const BagProvider = ({ children }) => {
   const updateQuantity = async (id, newQuantity, color, size) => {
     try {
       const headers = getAuthHeaders();
-      const response = await axios.put(`/api/cart/${id}`, { quantity: newQuantity, color, size}, { headers});
-
-      const updatedCart = response.data;
+      const updatedCart = await apiService.put(`/api/cart/${id}`, { quantity: newQuantity, color, size}, { headers});
+      
       if (updatedCart && updatedCart.items) {
         setBagItems(normalizeCartItems(updatedCart.items));
         return { success: true };
@@ -109,9 +108,7 @@ export const BagProvider = ({ children }) => {
   const removeItem = async (id, color, size) => {
     try {
       const headers = getAuthHeaders();
-      const response = await axios.delete(`/api/cart/${id}`, { headers, data: { color, size } });
-
-      const updatedCart = response.data;
+      const updatedCart = await apiService.delete(`/api/cart/${id}`, { headers, data: { color, size } });
 
       if (updatedCart && updatedCart.items) {
         setBagItems(normalizeCartItems(updatedCart.items));
