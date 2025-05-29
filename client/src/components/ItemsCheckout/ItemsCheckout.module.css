@@ -7,7 +7,7 @@
 .totalQtyItems{
     display: flex;
     justify-content: space-between;
-    font-size: 0.6rem;
+    font-size: clamp(0.875rem, 2.5vw, 1.125rem);
     padding: 20px;
     border-bottom: 1px solid #eee;
     font-weight: 600;
@@ -52,29 +52,29 @@
 }
 
 .itemInfo h3 {
-  font-size: 0.6rem;
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
   margin: 0 0 8px;
 }
 
 .brand {
   color: #666;
-  font-size: 0.6rem;
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
   margin: 0 0 8px;
 }
 
 .color, .size {
-  font-size: 0.6rem;
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
   margin: 0 0 4px;
 }
 
 .price {
-  font-size: 0.6rem;
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
   font-weight: 600;
   margin: 8px 0 0;
 }
 
 .quantity {
-  font-size: 0.6rem;
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
   font-weight: 600;
   margin: 8px 0 0;  
 }
@@ -95,7 +95,7 @@
 }
 
 .summary h2 {
-  font-size: 0.6rem;
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
   margin-bottom: 20px;
 }
 
@@ -108,11 +108,11 @@
 .summaryRow {
   display: flex;
   justify-content: space-between;
-  font-size: 0.6rem;
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
 }
 
 .total {
-  font-size: 0.6rem;
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
   font-weight: 600;
   border-top: 1px solid #eee;
   padding-top: 15px;
@@ -120,7 +120,7 @@
 }
 
 .freeShipping {
-  font-size: 0.875rem;
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
   color: #2d8653;
   margin: 0;
 }
