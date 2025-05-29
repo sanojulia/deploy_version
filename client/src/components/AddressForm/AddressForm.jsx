@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react'
 import styles from './AddressForm.module.css';
 import { AuthContext, getAuthHeaders } from '../../context/AuthContext';
-import axios from 'axios';  
+import { apiService } from '../../services/apiService';  
 
 const AddressForm = () => {
     const [address, setAddress] = useState({  
@@ -18,7 +18,7 @@ const AddressForm = () => {
             if (user) {
                 try {
                     const headers = getAuthHeaders();
-                    const { data } = await axios.get(`/api/user/${user.userId}`, { headers });
+                    const data = await apiService.get(`/api/user/${user.userId}`, { headers });
                     setAddress({
                         addressLine1: data.address?.addressLine1 || '',
                         addressLine2: data.address?.addressLine2 || '',
@@ -40,7 +40,7 @@ const AddressForm = () => {
 
         try {
             const headers = getAuthHeaders();
-            await axios.put(`/api/user/update-address/${user.userId}`, address, { headers });
+            await apiService.put(`/api/user/update-address/${user.userId}`, address, { headers });
             setMessage("Address updated successfully!");
         } catch (error) {
             console.error("Error updating address:", error);
